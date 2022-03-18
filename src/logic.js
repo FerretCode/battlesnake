@@ -3,8 +3,8 @@ const info = () => {
 
   const response = {
     apiversion: "1",
-    author: "",
-    color: "#888888",
+    author: "ferretcode",
+    color: "#20DD7F",
     head: "default",
     tail: "default",
   };
@@ -45,6 +45,17 @@ const move = (gameState) => {
   // Use information in gameState to prevent your Battlesnake from moving beyond the boundaries of the board.
   // const boardWidth = gameState.board.width
   // const boardHeight = gameState.board.height
+  const width = gameState.board.width;
+  const height = gameState.board.height;
+
+  console.log(`head x: ${gameState.you.head.x}, wall width: ${width}`);
+  console.log(`head y: ${gameState.you.head.y}, wall height: ${height}`);
+
+  if (gameState.you.head.x - width === 0) possibleMoves.left = false;
+  else if (width - gameState.you.head.x === 0) possibleMoves.right = false;
+
+  if (gameState.you.head.y - height === 0) possibleMoves.down = false;
+  else if (height - gameState.you.head.y === 0) possibleMoves.up = false;
 
   // TODO: Step 2 - Don't hit yourself.
   // Use information in gameState to prevent your Battlesnake from colliding with itself.
